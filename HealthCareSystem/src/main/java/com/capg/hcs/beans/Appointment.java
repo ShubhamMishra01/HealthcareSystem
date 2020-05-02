@@ -12,24 +12,54 @@ public class Appointment {
 	@Id
 	@Column(name = "appointmentid")
 	private int appointmentId;
+	
+	private Customer customer;
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	public Test getTest() {
+		return test;
+	}
+	public void setTest(Test test) {
+		this.test = test;
+	}
+	public DiagnosticCenter getDiagonisticCenter() {
+		return diagonisticCenter;
+	}
+	public void setDiagonisticCenter(DiagnosticCenter diagonisticCenter) {
+		this.diagonisticCenter = diagonisticCenter;
+	}
+	public boolean isApproved() {
+		return approved;
+	}
+	public void setApproved(boolean approved) {
+		this.approved = approved;
+	}
+	private Test test;
+	
+	private DiagnosticCenter diagonisticCenter;
+	
 	@Column(name = "appointmentStatus")
-	private String appointmentStatus;
+	private boolean approved;
+	
 	@Column(name = "dateTime")
 	private Date dateTime;
+	
 	@Column(name = "diagnosticCenter")
 	private DiagnosticCenter diagnosticCenter;
+	
+	
 	public int getAppointmentId() {
 		return appointmentId;
 	}
 	public void setAppointmentId(int appointmentId) {
 		this.appointmentId = appointmentId;
 	}
-	public String getAppointmentStatus() {
-		return appointmentStatus;
-	}
-	public void setAppointmentStatus(String appointmentStatus) {
-		this.appointmentStatus = appointmentStatus;
-	}
+	
 	public Date getDateTime() {
 		return dateTime;
 	}
@@ -42,10 +72,10 @@ public class Appointment {
 	public void setDiagnosticCenter(DiagnosticCenter diagnosticCenter) {
 		this.diagnosticCenter = diagnosticCenter;
 	}
-	public Appointment(int appointmentId, String appointmentStatus, Date dateTime, DiagnosticCenter diagnosticCenter) {
+	public Appointment(int appointmentId, boolean approved, Date dateTime, DiagnosticCenter diagnosticCenter) {
 		super();
 		this.appointmentId = appointmentId;
-		this.appointmentStatus = appointmentStatus;
+		this.approved = approved;
 		this.dateTime = dateTime;
 		this.diagnosticCenter = diagnosticCenter;
 	}
@@ -54,7 +84,7 @@ public class Appointment {
 	}
 	@Override
 	public String toString() {
-		return "Appointment [appointmentId=" + appointmentId + ", appointmentStatus=" + appointmentStatus
+		return "Appointment [appointmentId=" + appointmentId + ", appointmentStatus=" + approved
 				+ ", dateTime=" + dateTime + ", diagnosticCenter=" + diagnosticCenter + "]";
 	}
 	

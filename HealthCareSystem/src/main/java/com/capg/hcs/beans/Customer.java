@@ -1,6 +1,9 @@
 package com.capg.hcs.beans;
 
 import javax.persistence.Entity;
+
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,17 +13,35 @@ import javax.persistence.Table;
 public class Customer {
 	@Id
 	@Column(name = "customerId")
-	private int customerId;
+	private String customerId;
+	
+	static int id;
+	
+	public static void setId(int id) {
+		id = id++;
+	}
+
+	public void setTestList(List<Test> testList) {
+		this.testList = testList;
+	}
+
+	private List<Test> testList;
+	
 	@Column(name = "customerName")
 	private String customerName;
+	
 	@Column(name = "customerAge")
 	private int customerAge;
+	
 	@Column(name = "customerGender")
 	private String customerGender;
+	
 	@Column(name = "customerPhonenumber")
 	private long customerPhonenumber;
+	
 	@Column(name = "customerPassword")
 	private String customerPassword;
+	
 	@Column(name = "customerEmail")
 	private String customerEmail;
 
@@ -28,7 +49,7 @@ public class Customer {
 		super();
 	}
 
-	public Customer(int customerId, String customerName, int customerAge, String customerGender,
+	public Customer(String customerId, String customerName, int customerAge, String customerGender,
 			long customerPhonenumber, String customerPassword, String customerEmail) {
 		super();
 		this.customerId = customerId;
@@ -47,12 +68,12 @@ public class Customer {
 				+ ", customerPassword=" + customerPassword + ", customerEmail=" + customerEmail + "]";
 	}
 
-	public int getCustomerId() {
+	public String getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setCustomerId(String customerId) {
+		this.customerId = customerId + (id++);
 	}
 
 	public String getCustomerName() {
